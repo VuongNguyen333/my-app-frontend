@@ -1,0 +1,17 @@
+.item-box {
+  float: left;
+  margin-bottom: 10px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+.item-box > a {
+  display: inline-block;
+  width: 100%;
+}
+.item-box > a img {
+  border-radius: 5px;
+  transition: all 0.2s linear 0s;
+  width: 100%;
+}

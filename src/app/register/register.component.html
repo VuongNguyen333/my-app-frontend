@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <title>Fakebook Social Network</title>
+</head>
+<body>
+<div class="www-layout">
+  <section>
+    <div class="gap no-gap signin whitish medium-opacity register">
+      <div class="bg-image" [style.background-image]="'url(assets/images/resources/theme-bg.jpg)'"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="big-ad">
+              <figure><img src="assets/images/img.png" alt=""></figure>
+              <h1>Welcome to the Fakebook</h1>
+              <p>
+                Fakebook is a social network template that can be used to connect people. use this template for multipurpose social activities like job, dating, posting, bloging and much more. Now join & Make Cool Friends around the world !!!
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="we-login-register">
+              <div class="form-title">
+                <i class="fa fa-key"></i>Sign Up
+                <span>Sign Up now and meet the awesome friends around the world.</span>
+              </div>
+              <form class="we-form" method="post" [formGroup]="registerF" (submit)="onRegister()">
+                <input type="text" placeholder="Tên đăng nhập..." formControlName="username">
+                <input type="password" placeholder="Mật khẩu..." formControlName="password">
+                <input type="text" placeholder="Xác nhận mật khẩu..." formControlName="confirmPassword" >
+                <button type="submit" data-ripple="">Đăng kí</button>
+              </form>
+              <a data-ripple="" title="" href="#" class="with-smedia facebook"><i class="fa fa-facebook"></i></a>
+              <a data-ripple="" title="" href="#" class="with-smedia twitter"><i class="fa fa-twitter"></i></a>
+              <a data-ripple="" title="" href="#" class="with-smedia instagram"><i class="fa fa-instagram"></i></a>
+              <a data-ripple="" title="" href="#" class="with-smedia google"><i class="fa fa-google-plus"></i></a>
+              <span>already have an account? <a class="we-account underline" href="/login" title="">Sign in</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="assets/js/main.min.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>

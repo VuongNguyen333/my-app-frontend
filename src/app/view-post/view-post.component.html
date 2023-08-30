@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <title>Fakebook</title>
+  <link rel="icon" href="assets/images/logo33.png" type="image/png" sizes="16x16">
+</head>
+<body>
+<div class="theme-layout">
+
+  <div class="responsive-header">
+    <div class="mh-head first Sticky">
+			<span class="mh-btns-left">
+				<a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
+			</span>
+      <span class="mh-text">
+				<a href="newsfeed.html" title=""><img src="assets/images/logo2.png" alt=""></a>
+			</span>
+      <span class="mh-btns-right">
+				<a class="fa fa-sliders" href="#shoppingbag"></a>
+			</span>
+    </div>
+    <div class="mh-head second">
+      <form class="mh-form">
+        <input placeholder="search" />
+        <a href="#/" class="fa fa-search"></a>
+      </form>
+    </div>
+  </div><!-- responsive header -->
+
+  <div class="topbar stick">
+    <div class="logo">
+      <a title="" href="/"><img src="assets/images/img.png" alt=""></a>
+    </div>
+    <div class="top-area">
+      <div class="main-menu">
+				<span>
+			    	<i class="fa fa-braille"></i>
+			    </span>
+      </div>
+      <div class="top-search">
+        <form method="post" class="">
+          <input type="text" placeholder="Search People, Pages, Groups etc">
+          <button data-ripple><i class="ti-search"></i></button>
+        </form>
+      </div>
+      <div class="page-name">
+        <span>About</span>
+      </div>
+      <ul class="setting-area">
+        <li><a href="/" title="Home" data-ripple=""><i class="fa fa-home"></i></a></li>
+        <li>
+          <a href="#" title="Friend Requests" data-ripple="">
+            <i class="fa fa-user"></i>
+          </a>
+          <div class="dropdowns">
+            <span>New Requests <a href="#" title="">View all Requests</a></span>
+            <ul class="drops-menu">
+              <li>
+                <div>
+                  <figure>
+                    <img src="assets/images/resources/thumb-2.jpg" alt="">
+                  </figure>
+                  <div class="mesg-meta">
+                    <h6><a href="#" title="">Loren</a></h6>
+                    <span><b>Amy</b> is mutule friend</span>
+                    <i>yesterday</i>
+                  </div>
+                  <div class="add-del-friends">
+                    <a href="#" title=""><i class="fa fa-heart"></i></a>
+                    <a href="#" title=""><i class="fa fa-trash"></i></a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <figure>
+                    <img src="assets/images/resources/thumb-3.jpg" alt="">
+                  </figure>
+                  <div class="mesg-meta">
+                    <h6><a href="#" title="">Tina Trump</a></h6>
+                    <span><b>Simson</b> is mutule friend</span>
+                    <i>2 days ago</i>
+                  </div>
+                  <div class="add-del-friends">
+                    <a href="#" title=""><i class="fa fa-heart"></i></a>
+                    <a href="#" title=""><i class="fa fa-trash"></i></a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <figure>
+                    <img src="assets/images/resources/thumb-4.jpg" alt="">
+                  </figure>
+                  <div class="mesg-meta">
+                    <h6><a href="#" title="">Andrew</a></h6>
+                    <span><b>Bikra</b> is mutule friend</span>
+                    <i>4 hours ago</i>
+                  </div>
+                  <div class="add-del-friends">
+                    <a href="#" title=""><i class="fa fa-heart"></i></a>
+                    <a href="#" title=""><i class="fa fa-trash"></i></a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <figure>
+                    <img src="assets/images/resources/thumb-5.jpg" alt="">
+                  </figure>
+                  <div class="mesg-meta">
+                    <h6><a href="#" title="">Dasha</a></h6>
+                    <span><b>Sarah</b> is mutule friend</span>
+                    <i>9 hours ago</i>
+                  </div>
+                  <div class="add-del-friends">
+                    <a href="#" title=""><i class="fa fa-heart"></i></a>
+                    <a href="#" title=""><i class="fa fa-trash"></i></a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <figure>
+                    <img src="assets/images/resources/thumb-1.jpg" alt="">
+                  </figure>
+                  <div class="mesg-meta">
+                    <h6><a href="#" title="">Emily</a></h6>
+                    <span><b>Amy</b> is mutule friend</span>
+                    <i>4 hours ago</i>
+                  </div>
+                  <div class="add-del-friends">
+                    <a href="#" title=""><i class="fa fa-heart"></i></a>
+                    <a href="#" title=""><i class="fa fa-trash"></i></a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <a href="friend-requests.html" title="" class="more-mesg">View All</a>
+          </div>
+        </li>
+        <li >
+          <a  title="Notification" data-ripple="" href="http://localhost:4200/notification" (click)="onNoti()">
+            <i class="fa fa-bell"></i>
+          </a>
+        </li>
+      </ul>
+      <div class="user-img">
+        <h5 >Hi {{userLogin.name}}</h5>
+        <img  [src]="userLogin.avatarUrl" height=45px width=45px alt="">
+        <span class="status f-online"></span>
+        <div class="user-setting">
+          <span class="seting-title">User setting <a href="#" title="">see all</a></span>
+          <ul class="log-out">
+            <li><a href="/about" title=""><i class="ti-user"></i> view profile</a></li>
+            <li><a href="/edit-profile" title=""><i class="ti-pencil-alt"></i>edit profile</a></li>
+            <li><a href="/fakebook/update" title=""><i class="ti-settings"></i>account setting</a></li>
+            <li><a href="/logout" title=""><i class="ti-power-off"></i>log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div><!-- topbar -->
+
+
+  <section>
+    <div class="gap2 gray-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row merged20" id="page-contents">
+              <div class="col-lg-8 col-md-8">
+                <div class="central-meta" >
+                  <div class="user-post" >
+                    <div class="friend-info">
+                      <figure>
+                        <img [src]="userInfo.avatarUrl" height=45px width=45px alt="">
+                      </figure>
+                      <div class="friend-name">
+                        <div class="more">
+                          <div class="more-post-optns"><i class="ti-more-alt"></i>
+                            <ul>
+                              <li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
+                              <li><i class="fa fa-trash-o"></i>Delete Post</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <ins *ngIf="userLogin.id != postUser?.userInfo?.id"><a href="http://localhost:4200/user_page/{{postUser?.userInfo?.user?.username}}" title="" >{{postUser?.userInfo?.name}}</a> Post Album</ins>
+                        <ins *ngIf="userLogin.id == postUser?.userInfo?.id"><a href="http://localhost:4200/profile" title="" >{{postUser?.userInfo?.name}}</a> Post Album</ins>
+                        <span><i class="fa fa-globe"></i> published: {{postUser.dateCreated}} </span>
+                      </div>
+                      <div class="post-meta">
+                        <p>
+                          {{postUser.content}}
+                        </p>
+                        <figure>
+                          <div class="img-bunch">
+                            <div class="image-grid" >
+                              <div href="#"  class="container"  *ngFor="let image of postUser.image" >
+                                <a href="http://localhost:8080/image/{{image.image}}" class="image" >
+                                  <img [src]= "'http://localhost:8080/image/' + image.image" alt="Image" >
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </figure>
+                        <div class="we-video-info" id="{{postUser.id}}">
+                          <ul [(ngModel)]="statusLike">
+                            <li *ngIf="statusLike == 1">
+                              <div class="likes heart happy" title="Like/Dislike" [(ngModel)]="totalLike" (click)="createLike(postUser.totalLike || 0, userLogin.id || 0, postUser.id || 0, statusLike)">❤<span>{{totalLike }}</span></div>
+                            </li>
+                            <li *ngIf="statusLike == 0">
+                              <div class="likes heart" title="Like/Dislike" [(ngModel)]="totalLike" (click)="createLike(postUser.totalLike || 0, userLogin.id || 0, postUser.id || 0, statusLike)">❤<span>{{totalLike }}</span></div>
+                            </li>
+                            <li>
+																<span class="comment" title="Comments">
+																	<i class="fa fa-commenting"></i>
+																	<ins>{{postUser.totalComment}}</ins>
+																</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="coment-area" style="">
+                        <ul class="we-comet">
+                          <li *ngFor="let cmt of postUser.commentPostUser">
+                            <div class="comet-avatar">
+                              <img [src]= "cmt?.userInfo?.avatarUrl" alt="">
+                            </div>
+                            <div class="we-comment" *ngIf="cmt?.userInfo?.user?.username == userLogin?.user?.username; else OK">
+                              <h5><a title="" href="http://localhost:4200/profile">{{cmt?.userInfo?.name}}</a></h5>
+                              <p>{{cmt.content}}</p>
+                              <div class="inline-itms">
+                                <span>{{cmt.dateCreated}}</span>
+                                <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                              </div>
+                            </div>
+                            <ng-template #OK>
+                              <div class="we-comment">
+                                <h5><a title="" href="http://localhost:4200/user_page/{{cmt?.userInfo?.user?.username || null}}">{{cmt?.userInfo?.name}}</a></h5>
+                                <p>{{cmt.content}}</p>
+                                <div class="inline-itms">
+                                  <span>{{cmt.dateCreated}}</span>
+                                </div>
+                              </div>
+                            </ng-template>
+                          </li>
+                          <li class="post-comment">
+                            <div class="comet-avatar">
+                              <img [src]="userLogin.avatarUrl" alt="">
+                            </div>
+                            <div class="post-comt-box" >
+                              <div >
+                                <textarea name="content" placeholder="Post your comment" #myTextarea></textarea>
+                                <button type="submit" (click)="createComment(myTextarea.value ,postUser.id)">Bình luận</button>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- content -->
+
+  <a title="Your Cart Items" href="assets/shop-cart.html" class="shopping-cart" data-toggle="tooltip">Cart <i class="fa fa-shopping-bag"></i><span>02</span></a>
+</div>
+<div class="popup-wraper1">
+  <div class="popup direct-mesg">
+    <span class="popup-closed"><i class="ti-close"></i></span>
+    <div class="popup-meta">
+      <div class="popup-head">
+        <h5>Send Message</h5>
+      </div>
+      <div class="send-message">
+        <form method="post" class="c-form">
+          <input type="text" placeholder="Sophia">
+          <textarea placeholder="Write Message"></textarea>
+          <button type="submit" class="main-btn">Send</button>
+        </form>
+        <div class="add-smiles">
+          <div class="uploadimage">
+            <i class="fa fa-image"></i>
+            <label class="fileContainer">
+              <input type="file">
+            </label>
+          </div>
+          <span title="add icon" class="em em-expressionless"></span>
+          <div class="smiles-bunch">
+            <i class="em em---1"></i>
+            <i class="em em-smiley"></i>
+            <i class="em em-anguished"></i>
+            <i class="em em-laughing"></i>
+            <i class="em em-angry"></i>
+            <i class="em em-astonished"></i>
+            <i class="em em-blush"></i>
+            <i class="em em-disappointed"></i>
+            <i class="em em-worried"></i>
+            <i class="em em-kissing_heart"></i>
+            <i class="em em-rage"></i>
+            <i class="em em-stuck_out_tongue"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div><!-- send message popup -->
+
+<div class="popup-wraper3">
+  <div class="popup">
+    <span class="popup-closed"><i class="ti-close"></i></span>
+    <div class="popup-meta">
+      <div class="popup-head">
+        <h5>Report Post</h5>
+      </div>
+      <div class="Rpt-meta">
+        <span>We're sorry something's wrong. How can we help?</span>
+        <form method="post" class="c-form">
+          <div class="form-radio">
+            <div class="radio">
+              <label>
+                <input type="radio" name="radio" checked="checked"><i class="check-box"></i>It's spam or abuse
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="radio"><i class="check-box"></i>It breaks r/technology's rules
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="radio"><i class="check-box"></i>Not Related
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="radio"><i class="check-box"></i>Other issues
+              </label>
+            </div>
+          </div>
+          <div>
+            <label>Write about Report</label>
+            <textarea placeholder="write someting about Post" rows="2"></textarea>
+          </div>
+          <div>
+            <button data-ripple="" type="submit" class="main-btn">Submit</button>
+            <a href="#" data-ripple="" class="main-btn3 cancel">Close</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div><!-- report popup -->
+
+<script data-cfasync="false" src="../../assets/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/main.min.js"></script>
+<script>
+</script>
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <title>Fakebook</title>
+  <link rel="icon" src="../../assets/images/logo33.png" alt="" height=45px width=45px type="image/png" >
+</head>
+<body>
+
+<div class="theme-layout">
+  <div class="topbar stick">
+    <div class="logo">
+      <a title="" ><img src="assets/images/img.png"></a>
+    </div>
+
+    <div class="top-area">
+      <div class="top-search">
+        <form method="post" class="">
+          <input type="text" placeholder="Search People, Pages, Groups etc">
+          <button data-ripple><i class="ti-search"></i></button>
+        </form>
+      </div>
+      <div class="page-name">
+        <span>Logout</span>
+      </div>
+      <ul class="setting-area">
+        <li><a data-ripple="" title="Home" href="newsfeed.html"><i class="fa fa-home"></i></a></li>
+        <li><a href="#" title="Help" data-ripple=""><i class="fa fa-question-circle"></i></a>
+          <div class="dropdowns helps">
+            <span>Quick Help</span>
+            <form method="post">
+              <input type="text" placeholder="How can we help you?">
+            </form>
+            <span>Help with this page</span>
+            <ul class="help-drop">
+              <li><a href="#" title=""><i class="fa fa-book"></i>Terms and Conditions</a></li>
+              <li><a href="#" title=""><i class="fa fa-question-circle-o"></i>FAQs</a></li>
+              <li><a href="#" title=""><i class="fa fa-building-o"></i>Carrers</a></li>
+              <li><a href="#" title=""><i class="fa fa-map-marker"></i>Contact</a></li>
+              <li><a href="#" title=""><i class="fa fa-pencil-square-o"></i>Privacy Policy</a></li>
+              <li><a href="#" title=""><i class="fa fa-exclamation-triangle"></i>Report a Problem</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div><!-- topbar -->
+
+  <section>
+    <div class="page-header">
+      <div class="header-inner">
+        <h2>Now You are out of Pitnik</h2>
+        <p>
+          Discover what's happining right now in the world.
+        </p>
+      </div>
+      <figure><img src="assets/images/resources/baner-forum.png" alt=""></figure>
+    </div>
+  </section><!-- sub header -->
+
+  <section>
+    <div class="gap gray-bg">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="offset-lg-1 col-lg-10">
+            <div class="row border-center">
+              <div class="col-lg-6 col-md-6">
+                <div class="already-log">
+                  <h4>Recent Login</h4>
+                  <p>Next Time you login click your picture. To remove an account from this page click cross.</p>
+                  <div class="log-user">
+                    <div class="row">
+                      <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="user-log">
+                          <i class="ti-close" title="Remove Account"></i>
+                          <a href="#" title=""><img src="assets/images/resources/author.jpg" alt="">
+                            <span>Adam James</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="user-log">
+                          <i class="ti-close" title="Remove Account"></i>
+                          <a href="#" title=""><img src="assets/images/resources/author2.jpg" alt="">
+                            <span>Emma Watson</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="user-add">
+                          <div><i class="ti-plus"></i><span>Add Account</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div class="logout-f">
+                  <h4><i class="fa fa-key"></i> Login</h4>
+                  <p>Login again, you have recently signout from here</p>
+                  <div class="logout-form">
+                    <form method="post" class="again-login" [formGroup]="loginF" (submit)="onLogin()">
+                      <input type="text" placeholder="Tên tài khoản..." formControlName="username">
+                      <input type="password" placeholder="Mật khẩu..." formControlName="password">
+                      <button type="submit">Login</button>
+                    </form>
+                    <a href="/register" title="">Create New Signup</a>
+                    <p>By clicking Sign Up, you agree to our <a href="#" title="">Terms & Policy</a>. You may receive SMS notifications from us and can opt out at any time.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sub-total">
+              <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="total">
+                    <i class="ti-check"></i>
+                    <span>Registerd Users</span>
+                    <em>1,01,242</em>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="total">
+                    <i class="ti-image"></i>
+                    <span>Posts published</span>
+                    <em>21,01,242</em>
+                  </div>
+                </div>
+                <div class="col-lg-4col-md-4 col-sm-4">
+                  <div class="total">
+                    <i class="fa fa-users"></i>
+                    <span>People online</span>
+                    <em>41,242</em>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bottombar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <span class="copyright">© Pitnik 2020. All rights reserved.</span>
+          <i><img src="assets/images/credit-cards.png" alt=""></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup-wraper6">
+  <div class="popup login">
+    <span class="popup-closed"><i class="ti-close"></i></span>
+    <div class="popup-meta">
+      <div class="popup-head">
+        <h5><i class="ti-key"></i> Login to Fakebook</h5>
+      </div>
+    </div>
+  </div>
+</div><!-- upload popup -->
+
+</body>
+
+</html>

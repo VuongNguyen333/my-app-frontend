@@ -1,0 +1,440 @@
+<div class="theme-layout">
+  <div class="responsive-header">
+    <div class="mh-head first Sticky">
+			<span class="mh-btns-left">
+				<a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
+			</span>
+      <span class="mh-text">
+				<a href="newsfeed.html" title=""><img src="assets/images/logo2.png" alt=""></a>
+			</span>
+      <span class="mh-btns-right">
+				<a class="fa fa-sliders" href="#shoppingbag"></a>
+			</span>
+    </div>
+    <div class="mh-head second">
+      <form class="mh-form">
+        <input placeholder="search" />
+        <a href="#/" class="fa fa-search"></a>
+      </form>
+    </div>
+  </div><!-- responsive header -->
+
+  <div class="topbar stick">
+    <div class="logo">
+      <a title="" href="/"><img src="assets/images/img.png" alt=""></a>
+    </div>
+    <div class="top-area">
+      <div class="main-menu">
+				<span>
+			    	<i class="fa fa-braille"></i>
+			    </span>
+      </div>
+      <div class="top-search">
+        <form method="post" class="">
+          <input type="text" placeholder="Search People, Pages, Groups etc">
+          <button data-ripple><i class="ti-search"></i></button>
+        </form>
+      </div>
+      <div class="page-name">
+        <span>About</span>
+      </div>
+      <ul class="setting-area">
+        <li><a href="/" title="Home" data-ripple=""><i class="fa fa-home"></i></a></li>
+        <li>
+          <a href="/friend_request" title="Friend Requests" data-ripple="" (click)="onReqFr()">
+            <i class="fa fa-user"></i><em class="bg-red" *ngIf="userInfoReq.length!=0">{{userInfoReq.length}}</em>
+          </a>
+        </li>
+        <li >
+          <a  title="Notification" data-ripple="" href="http://localhost:4200/notification" (click)="onNoti()">
+            <i class="fa fa-bell"></i><em class="bg-red" *ngIf="notifications.length!=0">{{notifications.length}}</em>
+          </a>
+        </li>
+      </ul>
+      <div class="user-img">
+        <h5 >Hi {{userInfo.name}}</h5>
+        <img  [src]="userInfo.avatarUrl" height=45px width=45px alt="">
+        <span class="status f-online"></span>
+        <div class="user-setting">
+          <span class="seting-title">User setting</span>
+          <ul class="log-out">
+            <li><a href="/profile" title=""><i class="ti-user"></i> view profile</a></li>
+            <li><a href="/edit-profile" title=""><i class="ti-pencil-alt"></i>edit profile</a></li>
+            <li><a href="/fakebook/update" title=""><i class="ti-settings"></i>account setting</a></li>
+            <li><a href="/logout" title=""><i class="ti-power-off"></i>log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div><!-- topbar -->
+  <section>
+    <div class="gap2 gray-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row merged20" id="page-contents">
+              <div class="col-lg-3">
+                <aside class="sidebar static left">
+                  <div class="widget">
+                    <h4 class="widget-title">Shortcuts</h4>
+                    <ul class="naves">
+                      <li>
+                        <i class="ti-files"></i>
+                        <a href="/profile" title="">My pages</a>
+                      </li>
+                      <li>
+                        <i class="ti-power-off"></i>
+                        <a href="/logout" (click)="onLogout()"  title="">Logout</a>
+                      </li>
+                    </ul>
+                  </div><!-- Shortcuts -->
+                  <div class="widget stick-widget">
+                    <h4 class="widget-title">Who's follownig</h4>
+                    <ul class="followers">
+                      <li *ngFor="let user of notFriend">
+                        <figure><img src="{{user.avatarUrl}}" alt=""></figure>
+                        <div class="friend-meta">
+                          <h4><a href="http://localhost:4200/user_page/{{user?.user?.username}}" title="">{{user.name}}</a></h4>
+                        </div>
+                      </li>
+                    </ul>
+                  </div><!-- who's following -->
+                </aside>
+              </div><!-- sidebar -->
+              <div class="col-lg-6">
+                <div class="central-meta postbox">
+                  <span class="create-post">Create post</span>
+                  <div class="new-postbox">
+                    <figure>
+                      <img [src]="userInfo.avatarUrl" height=45px width=45px alt="">
+                    </figure>
+                    <div class="newpst-input">
+                      <form method="post">
+                        <textarea rows="2" placeholder="Share some what you are thinking?" #myTextarea></textarea>
+                      </form>
+                    </div>
+                    <div class="attachments">
+                      <ul>
+                        <li>
+                          <i class="fa fa-image"></i>
+                          <label class="fileContainer">
+                            <input type="file" (change)="uploadImage($event)">
+                          </label>
+                        </li>
+                        <li class="preview-btn">
+                          <button class="post-btn-preview" type="submit" data-ripple="" >Preview</button>
+                        </li>
+                      </ul>
+                      <button class="post-btn" type="submit" data-ripple="" (click)="newPost(isLogin.id, myTextarea.value)">Post</button>
+                    </div>
+                    <div class="add-location-post">
+                      <span>Drag map point to selected area</span>
+                      <div class="row">
+
+                        <div class="col-lg-6">
+                          <label class="control-label">Lat :</label>
+                          <input type="text" class="" id="us3-lat" />
+                        </div>
+                        <div class="col-lg-6">
+                          <label>Long :</label>
+                          <input type="text" class="" id="us3-lon" />
+                        </div>
+                      </div>
+                      <!-- map -->
+                      <div id="us3"></div>
+                    </div>
+                  </div>
+                </div><!-- add post new box -->
+                <div class="loadMore">
+                  <div class="central-meta" *ngFor="let postUser of postUsers" id="{{postUser.id}}">
+                    <div class="user-post" >
+                      <div class="friend-info">
+                        <figure>
+                          <img [src]="postUser?.userInfo?.avatarUrl" height=45px width=45px alt="">
+                        </figure>
+                        <div class="friend-name">
+                          <div class="more">
+                            <div class="more-post-optns"><i class="ti-more-alt"></i>
+                              <ul *ngIf="postUser?.userInfo?.id == isLogin.id">
+                                <li (click)="deletePost(postUser?.id )"><i class="fa fa-trash-o"></i>Delete Post</li>
+                              </ul>
+                            </div>
+                          </div>
+                          <ins *ngIf="isLogin.id != postUser?.userInfo?.id"><a href="http://localhost:4200/user_page/{{postUser?.userInfo?.user?.username}}" title="" >{{postUser?.userInfo?.name}}</a> Post Album</ins>
+                          <ins *ngIf="isLogin.id == postUser?.userInfo?.id"><a href="http://localhost:4200/profile" title="" >{{postUser?.userInfo?.name}}</a> Post Album</ins>
+                          <span><i class="fa fa-globe"></i> published: {{postUser.dateCreated}} </span>
+                        </div>
+                        <div class="post-meta">
+                          <p>
+                            {{postUser.content}}
+                          </p>
+                          <figure>
+                            <div class="img-bunch">
+                              <div class="image-grid" >
+                                <div href="#"  class="container"  *ngFor="let image of postUser.image" >
+                                  <a href="http://localhost:8080/image/{{image.image}}" class="image" >
+                                    <img [src]= "'http://localhost:8080/image/' + image.image" alt="Image" >
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </figure>
+                          <div class="we-video-info" id="{{postUser.id}}">
+                            <ul>
+                              <li>
+                                <a href="http://localhost:4200/view-post/{{postUser.id}}" class="likes heart" title="Like/Dislike" (click)="createLike(postUser.totalLike || 0, userInfo.id || 0, postUser.id || 0)">❤<span>{{postUser.totalLike}}</span></a>
+                              </li>
+                              <li>
+																<span class="comment" title="Comments">
+																	<i class="fa fa-commenting"></i>
+																	<ins>{{postUser.totalComment}}</ins>
+																</span>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="view-post">
+                            <button class="view-button" ><a href="http://localhost:4200/view-post/{{postUser.id}}">Xem bài viết</a></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- centerl meta -->
+              <div class="col-lg-3">
+                <aside class="sidebar static right">
+                </aside>
+              </div><!-- sidebar -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="bottombar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <span class="copyright">© Pitnik 2020. All rights reserved.</span>
+          <i><img src="assets/images/credit-cards.png" alt=""></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="img-comt">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="pop-image">
+              <div class="pop-item">
+                <figure><img src="assets/images/resources/blog-detail.jpg" alt=""></figure>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="user">
+              <figure><img src="assets/images/resources/user1.jpg" alt=""></figure>
+              <div class="user-information">
+                <h4><a href="#" title="">Danile Walker</a></h4>
+                <span>2 hours ago</span>
+              </div>
+              <a href="#" title="Follow" data-ripple="">Follow</a>
+            </div>
+            <div class="we-video-info">
+              <ul>
+                <li>
+                  <div title="Like/Dislike" class="likes heart">❤ <span>2K</span></div>
+                </li>
+                <li>
+									<span title="Comments" class="comment">
+										<i class="fa fa-commenting"></i>
+										<ins>52</ins>
+									</span>
+                </li>
+
+                <li>
+									<span>
+										<a title="Share" href="#" class="">
+											<i class="fa fa-share-alt"></i>
+										</a>
+										<ins>20</ins>
+									</span>
+                </li>
+              </ul>
+              <div class="users-thumb-list">
+                <a href="#" title="" data-toggle="tooltip" data-original-title="Anderw">
+                  <img src="assets/images/resources/userlist-1.jpg" alt="">
+                </a>
+                <a href="#" title="" data-toggle="tooltip" data-original-title="frank">
+                  <img src="assets/images/resources/userlist-2.jpg" alt="">
+                </a>
+                <a href="#" title="" data-toggle="tooltip" data-original-title="Sara">
+                  <img src="assets/images/resources/userlist-3.jpg" alt="">
+                </a>
+                <a href="#" title="" data-toggle="tooltip" data-original-title="Amy">
+                  <img src="assets/images/resources/userlist-4.jpg" alt="">
+                </a>
+                <span><strong>You</strong>, <b>Sarah</b> and <a title="" href="#">24+ more</a> liked</span>
+              </div>
+            </div>
+            <div style="display: block;" class="coment-area">
+              <ul class="we-comet">
+                <li>
+                  <div class="comet-avatar">
+                    <img alt="" src="assets/images/resources/nearly3.jpg">
+                  </div>
+                  <div class="we-comment">
+                    <h5><a title="" href="time-line.html">Jason borne</a></h5>
+                    <p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
+                    <div class="inline-itms">
+                      <span>1 year ago</span>
+                      <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
+                      <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a>
+                    </div>
+                  </div>
+
+                </li>
+                <li>
+                  <div class="comet-avatar">
+                    <img alt="" src="assets/images/resources/comet-4.jpg">
+                  </div>
+                  <div class="we-comment">
+                    <h5><a title="" href="time-line.html">Sophia</a></h5>
+                    <p>we are working for the dance and sing songs. this video is very awesome for the youngster.
+                      <i class="em em-smiley"></i>
+                    </p>
+                    <div class="inline-itms">
+                      <span>1 year ago</span>
+                      <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
+                      <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="comet-avatar">
+                    <img alt="" src="assets/images/resources/comet-4.jpg">
+                  </div>
+                  <div class="we-comment">
+                    <h5><a title="" href="time-line.html">Sophia</a></h5>
+                    <p>we are working for the dance and sing songs. this video is very awesome for the youngster.
+                      <i class="em em-smiley"></i>
+                    </p>
+                    <div class="inline-itms">
+                      <span>1 year ago</span>
+                      <a title="Reply" href="#" class="we-reply"><i class="fa fa-reply"></i></a>
+                      <a title="" href="#"><i class="fa fa-heart"></i><span>20</span></a>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <a class="showmore underline" title="" href="#">more comments+</a>
+                </li>
+                <li class="post-comment">
+                  <div class="comet-avatar">
+                    <img alt="" src="assets/images/resources/nearly1.jpg">
+                  </div>
+                  <div class="post-comt-box">
+                    <form method="post">
+                      <textarea placeholder="Post your comment"></textarea>
+                      <div class="add-smiles">
+                        <div class="uploadimage">
+                          <i class="fa fa-image"></i>
+                          <label class="fileContainer">
+                            <input type="file">
+                          </label>
+                        </div>
+                        <span title="add icon" class="em em-expressionless"></span>
+                        <div class="smiles-bunch">
+                          <i class="em em---1"></i>
+                          <i class="em em-smiley"></i>
+                          <i class="em em-anguished"></i>
+                          <i class="em em-laughing"></i>
+                          <i class="em em-angry"></i>
+                          <i class="em em-astonished"></i>
+                          <i class="em em-blush"></i>
+                          <i class="em em-disappointed"></i>
+                          <i class="em em-worried"></i>
+                          <i class="em em-kissing_heart"></i>
+                          <i class="em em-rage"></i>
+                          <i class="em em-stuck_out_tongue"></i>
+                        </div>
+                      </div>
+
+                      <button type="submit"></button>
+                    </form>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- The Scrolling Modal image with comment -->
+
+<script>
+  jQuery(document).ready(function($) {
+
+    $('#us3').locationpicker({
+      location: {
+        latitude: -8.681013,
+        longitude: 115.23506410000005
+      },
+      radius: 0,
+      inputBinding: {
+        latitudeInput: $('#us3-lat'),
+        longitudeInput: $('#us3-lon'),
+        radiusInput: $('#us3-radius'),
+        locationNameInput: $('#us3-address')
+      },
+      enableAutocomplete: true,
+      onchanged: function (currentLocation, radius, isMarkerDropped) {
+        // Uncomment line below to show alert on each Location Changed event
+        //alert("Location changed. New location (" + currentLocation.latitude + ", " + currentLocation.longitude + ")");
+      }
+    });
+
+    if ($.isFunction($.fn.toast)) {
+      $.toast({
+        heading: 'Welcome To Pitnik',
+        text: '',
+        showHideTransition: 'slide',
+        icon: 'success',
+        loaderBg: '#fa6342',
+        position: 'bottom-right',
+        hideAfter: 3000,
+      });
+
+      $.toast({
+        heading: 'Information',
+        text: 'Now you can full demo of pitnik and hope you like',
+        showHideTransition: 'slide',
+        icon: 'info',
+        hideAfter: 5000,
+        loaderBg: '#fa6342',
+        position: 'bottom-right',
+      });
+      $.toast({
+        heading: 'Support & Help',
+        text: 'Report any <a href="#">issues</a> by email',
+        showHideTransition: 'fade',
+        icon: 'error',
+        hideAfter: 7000,
+        loaderBg: '#fa6342',
+        position: 'bottom-right',
+      });
+    }
+
+  });
+</script>

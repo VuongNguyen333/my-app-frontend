@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <title>Fakebook</title>
+  <link rel="icon" href="assets/images/logo33.png" type="image/png" sizes="16x16">
+</head>
+<body>
+<div class="theme-layout">
+
+  <div class="responsive-header">
+    <div class="mh-head first Sticky">
+			<span class="mh-btns-left">
+				<a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
+			</span>
+      <span class="mh-text">
+				<a href="newsfeed.html" title=""><img src="assets/images/logo2.png" alt=""></a>
+			</span>
+      <span class="mh-btns-right">
+				<a class="fa fa-sliders" href="#shoppingbag"></a>
+			</span>
+    </div>
+    <div class="mh-head second">
+      <form class="mh-form">
+        <input placeholder="search" />
+        <a href="#/" class="fa fa-search"></a>
+      </form>
+    </div>
+  </div><!-- responsive header -->
+
+  <div class="topbar stick">
+    <div class="logo">
+      <a title="" href="/"><img src="assets/images/img.png" alt=""></a>
+    </div>
+    <div class="top-area">
+      <div class="main-menu">
+				<span>
+			    	<i class="fa fa-braille"></i>
+			    </span>
+      </div>
+      <div class="top-search">
+        <form method="post" class="">
+          <input type="text" placeholder="Search People, Pages, Groups etc">
+          <button data-ripple><i class="ti-search"></i></button>
+        </form>
+      </div>
+      <div class="page-name">
+        <span>About</span>
+      </div>
+      <ul class="setting-area">
+        <li><a href="/" title="Home" data-ripple=""><i class="fa fa-home"></i></a></li>
+        <li>
+          <a href="/friend_request" title="Friend Requests" data-ripple="" (click)="onReqFr()">
+            <i class="fa fa-user"></i><em class="bg-red" *ngIf="userInfoReq.length!=0">{{userInfoReq.length}}</em>
+          </a>
+        </li>
+        <li >
+          <a  title="Notification" data-ripple="" href="http://localhost:4200/notification" (click)="onNoti()">
+            <i class="fa fa-bell"></i><em class="bg-red" *ngIf="notifications.length!=0">{{notifications.length}}</em>
+          </a>
+        </li>
+      </ul>
+      <div class="user-img">
+        <h5 >Hi {{userInfo.name}}</h5>
+        <img  [src]="userInfo.avatarUrl" height=45px width=45px alt="">
+        <span class="status f-online"></span>
+        <div class="user-setting">
+          <span class="seting-title">User setting</span>
+          <ul class="log-out">
+            <li><a href="/profile" title=""><i class="ti-user"></i> view profile</a></li>
+            <li><a href="/edit-profile" title=""><i class="ti-pencil-alt"></i>edit profile</a></li>
+            <li><a href="/fakebook/update" title=""><i class="ti-settings"></i>account setting</a></li>
+            <li><a href="/logout" title=""><i class="ti-power-off"></i>log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div><!-- topbar -->
+
+
+  <section>
+    <div class="gap2 gray-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row merged20" id="page-contents">
+              <div class="user-profile">
+                <figure>
+                  <div class="edit-pp">
+                    <label class="fileContainer">
+                      <i class="fa fa-camera"></i>
+                      <input type="file" (change)="uploadImage1($event, userInfo.id)">
+                    </label>
+                  </div>
+                  <a href="{{userInfo.backgroundUrl}}">
+                    <img [src]="userInfo.backgroundUrl"  alt="">
+                  </a>
+
+                  <ul class="profile-controls">
+                    <li>
+                      <div class="edit-seting" title="Edit Profile image"><i class="fa fa-sliders"></i>
+                        <ul class="more-dropdown">
+                          <li><a href="/fakebook/update" title="">Account Settings</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </figure>
+                <div class="profile-section">
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3">
+                      <div class="profile-author">
+                        <div class="profile-author-thumb">
+                          <img alt="author" [src]="userInfo.avatarUrl" height=80px width=80px (click)="showAvatar()">
+                          <div class="edit-dp">
+                            <label class="fileContainer">
+                              <i class="fa fa-camera"></i>
+                              <input type="file" (change)="uploadImage($event, userInfo.id)">
+                            </label>
+                          </div>
+                        </div>
+                        <div class="author-content">
+                          <a class="h4 author-name">{{userInfo.name}}</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-10 col-md-9">
+                      <ul class="profile-menu">
+                        <li>
+                          <a class="">Timeline</a>
+                        </li>
+                        <li>
+                          <a class="active">About</a>
+                        </li>
+                        <li>
+                          <a >Friends</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- user profile banner  -->
+              <div class="col-lg-4 col-md-4">
+                <aside class="sidebar">
+                  <div class="central-meta stick-widget">
+                    <span class="create-post">Personal Info</span>
+                    <div class="personal-head">
+                      <span class="f-title"><i class="fa fa-user"></i> About Me:</span>
+                      <p>
+                        {{userInfo.about}}
+                      </p>
+                      <span class="f-title"><i class="fa fa-birthday-cake"></i> Age:</span>
+                      <p>
+                        {{userInfo.age}}
+                      </p>
+                      <span class="f-title"><i class="fa fa-globe"></i> Country:</span>
+                      <p>
+                        {{userInfo.address}}
+                      </p>
+                      <a href="/edit-profile" class="friend-button">Chỉnh sửa</a>
+                    </div>
+                  </div>
+                </aside>
+              </div>
+              <div class="col-lg-8 col-md-8">
+                <div class="central-meta" *ngFor="let postUser of postUsers" id="{{postUser.id}}">
+                  <div class="user-post" >
+                    <div class="friend-info">
+                      <figure>
+                        <img [src]="userInfo.avatarUrl" height=45px width=45px alt="">
+                      </figure>
+                      <div class="friend-name">
+                        <div class="more">
+                          <div class="more-post-optns"><i class="ti-more-alt"></i>
+                            <ul>
+                              <li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
+                              <li><i class="fa fa-trash-o"></i>Delete Post</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <ins><a href="time-line.html" title="">{{userInfo.name}}</a> Post Album</ins>
+                        <span><i class="fa fa-globe"></i> published: {{postUser.dateCreated}} </span>
+                      </div>
+                      <div class="post-meta">
+                        <p>
+                          {{postUser.content}}
+                        </p>
+                        <figure>
+                          <div class="img-bunch">
+                            <div class="image-grid" >
+                              <div href="#"  class="container"  *ngFor="let image of postUser.image" >
+                                <a href="http://localhost:8080/image/{{image.image}}" class="image" >
+                                  <img [src]= "'http://localhost:8080/image/' + image.image" alt="Image" >
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </figure>
+                        <div class="we-video-info" id="{{postUser.id}}">
+                          <ul>
+                            <li>
+                              <a href="http://localhost:4200/view-post/{{postUser.id}}" class="likes heart" title="Like/Dislike" (click)="createLike(postUser.totalLike || 0, userInfo.id || 0, postUser.id || 0)">❤<span>{{postUser.totalLike}}</span></a>
+                            </li>
+                            <li>
+																<span class="comment" title="Comments">
+																	<i class="fa fa-commenting"></i>
+																	<ins>{{postUser.totalComment}}</ins>
+																</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="view-post">
+                          <button class="view-button" ><a href="http://localhost:4200/view-post/{{postUser.id}}">Xem bài viết</a></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="central-meta" id="friend-section">
+                  <span class="create-post">Friend's {{userInfos.length}} </span>
+                  <ul class="frndz-list" >
+                    <table style="height: 200% ; width: 200%">
+                      <tr>
+                        <td *ngFor="let fr of userInfos" style="width: 50%">
+                            <img [src]="fr?.avatarUrl" alt="" height=50px width=50px >
+                            <div class="sugtd-frnd-meta" >
+                              <a href="http://localhost:4200/user_page/{{fr?.user?.username}}" title="">{{fr?.name}}</a>
+                            </div>
+                        </td>
+                        <td></td>
+                      </tr>
+
+                    </table>
+                  </ul>
+                </div><!-- friends list -->
+                <div class="central-meta">
+                  <span class="create-post">Photos {{images.length}} </span>
+                  <ul class="photos-list " >
+                    <table style="width: 200% ; height: 200%">
+                      <tr >
+                        <td *ngFor="let img of images" >
+                          <div class="item-box"  >
+                            <a id="{{img?.id}}" class="strip" href="http://localhost:8080/image/{{img?.image}}" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
+                              <img [src]= "'http://localhost:8080/image/' + img?.image" alt="">
+                            </a>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- content -->
+
+  <a title="Your Cart Items" href="assets/shop-cart.html" class="shopping-cart" data-toggle="tooltip">Cart <i class="fa fa-shopping-bag"></i><span>02</span></a>
+
+  <div class="bottombar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <span class="copyright">© Pitnik 2020. All rights reserved.</span>
+          <i><img src="assets/images/credit-cards.png" alt=""></i>
+        </div>
+      </div>
+    </div>
+  </div><!-- bottom bar -->
+</div>
+<div class="popup-wraper1">
+  <div class="popup direct-mesg">
+    <span class="popup-closed"><i class="ti-close"></i></span>
+    <div class="popup-meta">
+      <div class="popup-head">
+        <h5>Send Message</h5>
+      </div>
+      <div class="send-message">
+        <form method="post" class="c-form">
+          <input type="text" placeholder="Sophia">
+          <textarea placeholder="Write Message"></textarea>
+          <button type="submit" class="main-btn">Send</button>
+        </form>
+        <div class="add-smiles">
+          <div class="uploadimage">
+            <i class="fa fa-image"></i>
+            <label class="fileContainer">
+              <input type="file">
+            </label>
+          </div>
+          <span title="add icon" class="em em-expressionless"></span>
+          <div class="smiles-bunch">
+            <i class="em em---1"></i>
+            <i class="em em-smiley"></i>
+            <i class="em em-anguished"></i>
+            <i class="em em-laughing"></i>
+            <i class="em em-angry"></i>
+            <i class="em em-astonished"></i>
+            <i class="em em-blush"></i>
+            <i class="em em-disappointed"></i>
+            <i class="em em-worried"></i>
+            <i class="em em-kissing_heart"></i>
+            <i class="em em-rage"></i>
+            <i class="em em-stuck_out_tongue"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div><!-- send message popup -->
+
+<div class="popup-wraper3">
+  <div class="popup">
+    <span class="popup-closed"><i class="ti-close"></i></span>
+    <div class="popup-meta">
+      <div class="popup-head">
+        <h5>Report Post</h5>
+      </div>
+      <div class="Rpt-meta">
+        <span>We're sorry something's wrong. How can we help?</span>
+        <form method="post" class="c-form">
+          <div class="form-radio">
+            <div class="radio">
+              <label>
+                <input type="radio" name="radio" checked="checked"><i class="check-box"></i>It's spam or abuse
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="radio"><i class="check-box"></i>It breaks r/technology's rules
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="radio"><i class="check-box"></i>Not Related
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="radio"><i class="check-box"></i>Other issues
+              </label>
+            </div>
+          </div>
+          <div>
+            <label>Write about Report</label>
+            <textarea placeholder="write someting about Post" rows="2"></textarea>
+          </div>
+          <div>
+            <button data-ripple="" type="submit" class="main-btn">Submit</button>
+            <a href="#" data-ripple="" class="main-btn3 cancel">Close</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div><!-- report popup -->
+
+<script data-cfasync="false" src="../../assets/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/main.min.js"></script>
+<script>
+</script>
+</body>
+
+</html>
